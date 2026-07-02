@@ -87,7 +87,34 @@
         }
       ],
       "latest": "0.1.0"
+    },
+    "autogen": {
+      "versions": [
+        {
+          "version": "0.1.0",
+          "archive": "dist/autogen-0.1.0.tar.gz",
+          "checksum": "sha256:918655686840d3d7e6ba5c667f4f5eb1df6efaa5b92af08f3331d80d12c29973",
+          "publishedAt": "2026-07-02T21:40:39.991402+00:00",
+          "summary": {
+            "name": "AutoGen Bridge",
+            "description": "Pont AutoGen (Microsoft) : conversations multi-agents exposées comme orchestrations Grimoire gouvernées — rôles bornés, tours de parole tracés, sortie en handoff packet.",
+            "license": "MIT",
+            "patterns": [
+              "ORC-01",
+              "ORC-03"
+            ],
+            "permissions": {
+              "filesystem": "artifacts",
+              "network": true,
+              "hooks": [],
+              "memory": "none"
+            },
+            "upstream": "https://github.com/microsoft/autogen"
+          }
+        }
+      ],
+      "latest": "0.1.0"
     }
   },
-  "updatedAt": "2026-07-02T12:09:24.525614+00:00"
+  "updatedAt": "2026-07-02T21:40:39.991413+00:00"
 }

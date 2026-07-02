@@ -114,7 +114,61 @@
         }
       ],
       "latest": "0.1.0"
+    },
+    "browser-use": {
+      "versions": [
+        {
+          "version": "0.1.0",
+          "archive": "dist/browser-use-0.1.0.tar.gz",
+          "checksum": "sha256:b3c4647e8761dbff5cee23dd521bc1f036b4dffbaa2981be230936a8f4d03f3b",
+          "publishedAt": "2026-07-02T21:41:22.286129+00:00",
+          "summary": {
+            "name": "Browser Use",
+            "description": "Agents de navigation web gouvernés : chaque action UI produit une preuve (screenshot, DOM, URL), périmètre de navigation borné par allowlist, actions irréversibles simulées avant exécution.",
+            "license": "MIT",
+            "patterns": [
+              "QUA-11",
+              "GOV-07"
+            ],
+            "permissions": {
+              "filesystem": "artifacts",
+              "network": true,
+              "hooks": [],
+              "memory": "none"
+            },
+            "upstream": "https://github.com/browser-use/browser-use"
+          }
+        }
+      ],
+      "latest": "0.1.0"
+    },
+    "haystack": {
+      "versions": [
+        {
+          "version": "0.1.0",
+          "archive": "dist/haystack-0.1.0.tar.gz",
+          "checksum": "sha256:f384c3797739e65db527e59b66aa1f701b3ac907f80741bb5b7fd15edf161273",
+          "publishedAt": "2026-07-02T21:41:22.443638+00:00",
+          "summary": {
+            "name": "Haystack RAG",
+            "description": "Pipelines RAG Haystack gouvernés : indexation documentaire déclarée (sources, fraîcheur, propriétaire), rappel avec provenance obligatoire — contre le RAG aveugle.",
+            "license": "Apache-2.0",
+            "patterns": [
+              "KNO-06",
+              "KNO-02"
+            ],
+            "permissions": {
+              "filesystem": "artifacts",
+              "network": true,
+              "hooks": [],
+              "memory": "read"
+            },
+            "upstream": "https://github.com/deepset-ai/haystack"
+          }
+        }
+      ],
+      "latest": "0.1.0"
     }
   },
-  "updatedAt": "2026-07-02T21:40:39.991413+00:00"
+  "updatedAt": "2026-07-02T21:41:22.443649+00:00"
 }

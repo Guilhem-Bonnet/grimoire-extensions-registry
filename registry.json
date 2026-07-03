@@ -340,9 +340,38 @@
         }
       ],
       "latest": "0.1.0"
+    },
+    "fennara-godot": {
+      "versions": [
+        {
+          "version": "0.1.0",
+          "archive": "dist/fennara-godot-0.1.0.tar.gz",
+          "checksum": "sha256:ff29f5a339437dc1ae1580a3e30951a6693fdec40b597898912152e05194035f",
+          "publishedAt": "2026-07-03T13:24:48.232983+00:00",
+          "summary": {
+            "name": "Fennara Godot Feedback",
+            "kind": "mcp-toolbox",
+            "description": "Boucle de feedback Godot réelle pour les agents via le serveur MCP Fennara : diagnostics, contexte scène/nœuds, screenshots, logs runtime et état éditeur — des preuves branchables sur les gates evidence-gated de l'archétype game-dev.",
+            "license": "MIT",
+            "patterns": [
+              "QUA-12",
+              "QUA-04",
+              "RUN-08"
+            ],
+            "permissions": {
+              "filesystem": "artifacts",
+              "network": true,
+              "hooks": [],
+              "memory": "none"
+            },
+            "upstream": "https://github.com/fennaraOfficial/fennara-godot-ai"
+          }
+        }
+      ],
+      "latest": "0.1.0"
     }
   },
-  "updatedAt": "2026-07-03T13:12:37.421274+00:00",
+  "updatedAt": "2026-07-03T13:24:48.232993+00:00",
   "blueprints": {
     "onboarding-crew": {
       "file": "blueprints/onboarding-crew.blueprint.json",

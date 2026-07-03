@@ -312,9 +312,37 @@
         }
       ],
       "latest": "0.1.1"
+    },
+    "grimoire-mcp": {
+      "versions": [
+        {
+          "version": "0.1.0",
+          "archive": "dist/grimoire-mcp-0.1.0.tar.gz",
+          "checksum": "sha256:5434144d9b41d8eec8ee086e3d043672002f3ff828df8ea3b35835edb849c345",
+          "publishedAt": "2026-07-03T13:12:37.421263+00:00",
+          "summary": {
+            "name": "Grimoire MCP Server",
+            "kind": "mcp-toolbox",
+            "description": "Le serveur MCP du kit comme toolbox gouvernée : accès outillé aux missions, preuves et mémoire du projet depuis tout client MCP, qualifié par le MCP Trust Gate (GOV-09) — permissions déclarées, surfaces bornées.",
+            "license": "MIT",
+            "patterns": [
+              "GOV-09",
+              "GOV-07"
+            ],
+            "permissions": {
+              "filesystem": "artifacts",
+              "network": false,
+              "hooks": [],
+              "memory": "read"
+            },
+            "upstream": "https://github.com/Guilhem-Bonnet/Grimoire-kit"
+          }
+        }
+      ],
+      "latest": "0.1.0"
     }
   },
-  "updatedAt": "2026-07-03T13:00:20.346660+00:00",
+  "updatedAt": "2026-07-03T13:12:37.421274+00:00",
   "blueprints": {
     "onboarding-crew": {
       "file": "blueprints/onboarding-crew.blueprint.json",

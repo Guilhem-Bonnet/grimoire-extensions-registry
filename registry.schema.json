@@ -4,42 +4,84 @@
   "title": "Grimoire Forge Extension Registry Index",
   "type": "object",
   "additionalProperties": false,
-  "required": ["registryVersion", "extensions"],
+  "required": [
+    "registryVersion",
+    "extensions"
+  ],
   "properties": {
-    "registryVersion": { "type": "integer", "const": 1 },
-    "updatedAt": { "type": "string", "format": "date-time" },
+    "registryVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
     "extensions": {
       "type": "object",
-      "propertyNames": { "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "propertyNames": {
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["latest", "versions"],
+        "required": [
+          "latest",
+          "versions"
+        ],
         "properties": {
-          "latest": { "type": "string" },
+          "latest": {
+            "type": "string"
+          },
           "versions": {
             "type": "array",
             "minItems": 1,
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["version", "archive", "checksum", "publishedAt", "summary"],
+              "required": [
+                "version",
+                "archive",
+                "checksum",
+                "publishedAt",
+                "summary"
+              ],
               "properties": {
                 "version": {
                   "type": "string",
                   "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
                 },
-                "archive": { "type": "string", "pattern": "^dist/[^/]+\\.tar\\.gz$" },
-                "checksum": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
-                "publishedAt": { "type": "string" },
+                "archive": {
+                  "type": "string",
+                  "pattern": "^dist/[^/]+\\.tar\\.gz$"
+                },
+                "checksum": {
+                  "type": "string",
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "publishedAt": {
+                  "type": "string"
+                },
                 "summary": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["name", "description", "license", "patterns", "permissions"],
+                  "required": [
+                    "name",
+                    "description",
+                    "license",
+                    "patterns",
+                    "permissions"
+                  ],
                   "properties": {
-                    "name": { "type": "string" },
-                    "description": { "type": "string" },
-                    "license": { "type": "string" },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "license": {
+                      "type": "string"
+                    },
                     "patterns": {
                       "type": "array",
                       "minItems": 1,
@@ -48,9 +90,80 @@
                         "pattern": "^(ORG|ORC|GOV|QUA|KNO|RUN|COG|MOD)-\\d{2}$"
                       }
                     },
-                    "permissions": { "type": "object" },
-                    "upstream": { "type": ["string", "null"] }
+                    "permissions": {
+                      "type": "object"
+                    },
+                    "upstream": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "blueprints": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "checksum",
+          "publishedAt",
+          "summary"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "pattern": "^blueprints/[^/]+\\.blueprint\\.json$"
+          },
+          "checksum": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "publishedAt": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "nodes",
+              "edges"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "catalogVersion": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "nodes": {
+                "type": "integer"
+              },
+              "edges": {
+                "type": "integer"
+              },
+              "extensions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
                 }
               }
             }

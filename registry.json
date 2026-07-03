@@ -170,5 +170,22 @@
       "latest": "0.1.0"
     }
   },
-  "updatedAt": "2026-07-02T21:41:22.443649+00:00"
+  "updatedAt": "2026-07-03T12:46:48.837439+00:00",
+  "blueprints": {
+    "onboarding-crew": {
+      "file": "blueprints/onboarding-crew.blueprint.json",
+      "checksum": "sha256:db2283c176c3adf8d04a6e4453278a03906167429c424fa49ae52ae0f9dfc578",
+      "publishedAt": "2026-07-03T12:46:48.837428+00:00",
+      "summary": {
+        "name": "Onboarding d'un crew CrewAI gouverné",
+        "description": "Flow d'exemple : un crew CrewAI encapsulé derrière l'orchestrateur, avec policy engine en amont et evidence pack en aval.",
+        "catalogVersion": "1.0.0",
+        "nodes": 4,
+        "edges": 4,
+        "extensions": [
+          "crewai"
+        ]
+      }
+    }
+  }
 }

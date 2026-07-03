@@ -203,13 +203,31 @@ def main() -> int:
             releases += 1
             errors.extend(check_release(registry, ext_id, release, catalogue_patterns))
 
+    blueprints = index.get("blueprints", {})
+    for bp_id, entry in sorted(blueprints.items()):
+        f = registry / entry["file"]
+        if not f.is_file():
+            errors.append(f"blueprint {bp_id} : fichier absent ({entry['file']})")
+            continue
+        if sha256(f) != entry["checksum"]:
+            errors.append(f"blueprint {bp_id} : checksum invalide")
+            continue
+        try:
+            bp = json.loads(f.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            errors.append(f"blueprint {bp_id} : JSON invalide ({exc})")
+            continue
+        if bp.get("id") != bp_id:
+            errors.append(f"blueprint {bp_id} : id du fichier ({bp.get('id')}) != index")
+
     if errors:
         for error in errors:
             print(f"ERREUR : {error}", file=sys.stderr)
         return 1
     print(
         f"OK : {releases} release(s) de "
-        f"{len(index.get('extensions', {}))} extension(s) conformes"
+        f"{len(index.get('extensions', {}))} extension(s) et "
+        f"{len(blueprints)} blueprint(s) conformes"
     )
     return 0
 

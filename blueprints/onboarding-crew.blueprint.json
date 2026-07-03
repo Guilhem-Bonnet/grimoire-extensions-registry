@@ -1,0 +1,148 @@
+{
+  "blueprintVersion": 1,
+  "id": "onboarding-crew",
+  "name": "Onboarding d'un crew CrewAI gouverné",
+  "description": "Flow d'exemple : un crew CrewAI encapsulé derrière l'orchestrateur, avec policy engine en amont et evidence pack en aval.",
+  "catalogRef": {
+    "version": "1.0.0"
+  },
+  "extensions": [
+    {
+      "id": "crewai",
+      "version": ">=0.1.0"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "orchestrateur",
+      "kind": "pattern",
+      "ref": "ORC-01",
+      "label": "Orchestrateur et subagents",
+      "position": {
+        "x": 0,
+        "y": 120
+      },
+      "pins": [
+        {
+          "id": "mission-out",
+          "direction": "out",
+          "contract": "task-envelope"
+        },
+        {
+          "id": "handoff-in",
+          "direction": "in",
+          "contract": "handoff-packet"
+        }
+      ]
+    },
+    {
+      "id": "policy-gate",
+      "kind": "pattern",
+      "ref": "GOV-01",
+      "label": "Policy engine",
+      "position": {
+        "x": 260,
+        "y": 120
+      },
+      "pins": [
+        {
+          "id": "task-in",
+          "direction": "in",
+          "contract": "task-envelope"
+        },
+        {
+          "id": "task-out",
+          "direction": "out",
+          "contract": "task-envelope"
+        }
+      ]
+    },
+    {
+      "id": "crew-recherche",
+      "kind": "extension-node",
+      "ref": "crewai/crewai-crew",
+      "label": "Crew de recherche",
+      "position": {
+        "x": 520,
+        "y": 120
+      },
+      "config": {
+        "crewDefinition": "crews/research-crew.yaml"
+      },
+      "pins": [
+        {
+          "id": "mission",
+          "direction": "in",
+          "contract": "task-envelope"
+        },
+        {
+          "id": "result",
+          "direction": "out",
+          "contract": "handoff-packet"
+        }
+      ]
+    },
+    {
+      "id": "evidence",
+      "kind": "pattern",
+      "ref": "QUA-04",
+      "label": "Evidence pack et verdict",
+      "position": {
+        "x": 780,
+        "y": 120
+      },
+      "pins": [
+        {
+          "id": "handoff-in",
+          "direction": "in",
+          "contract": "handoff-packet"
+        },
+        {
+          "id": "verdict-out",
+          "direction": "out",
+          "contract": "handoff-packet"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "orchestrateur.mission-out",
+      "to": "policy-gate.task-in",
+      "contract": "task-envelope"
+    },
+    {
+      "from": "policy-gate.task-out",
+      "to": "crew-recherche.mission",
+      "contract": "task-envelope"
+    },
+    {
+      "from": "crew-recherche.result",
+      "to": "evidence.handoff-in",
+      "contract": "handoff-packet"
+    },
+    {
+      "from": "evidence.verdict-out",
+      "to": "orchestrateur.handoff-in",
+      "contract": "handoff-packet"
+    }
+  ],
+  "telemetry": {
+    "bindings": [
+      {
+        "nodeId": "crew-recherche",
+        "eventSource": "task-flow",
+        "match": {
+          "task": "crewai-crew-runner"
+        }
+      },
+      {
+        "nodeId": "policy-gate",
+        "eventSource": "hook-runtime",
+        "match": {
+          "hook": "grimoire-control-surface-guard"
+        }
+      }
+    ]
+  }
+}

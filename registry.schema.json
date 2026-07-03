@@ -98,6 +98,19 @@
                         "string",
                         "null"
                       ]
+                    },
+                    "kind": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "flow-adapter",
+                        "mcp-toolbox",
+                        "observability",
+                        "capability",
+                        null
+                      ]
                     }
                   }
                 }
